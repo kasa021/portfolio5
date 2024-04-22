@@ -1,0 +1,22 @@
+---
+import sun from "../../public/sun.svg";
+import styles from "./header.module.css";
+---
+
+<div class={styles.header}>
+  <p>kAsA's website</p>
+  <ul>
+    <li class="links">
+      <a href="/about" class={styles.link}>About</a>
+    </li>
+    <li>
+      <a href="/blogs" class={styles.link}>Blogs</a>
+    </li>
+    <li>
+      <a href="/works" class={styles.link}>Works</a>
+    </li>
+    <li>
+      <img src={sun.src} alt="sun" class={styles.themeIcon} />
+    </li>
+  </ul>
+</div>
