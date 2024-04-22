@@ -1,7 +1,9 @@
-p {
+.home {
     font-size: 28px;
     margin: auto 0 16px 3%;
     color : var(--text);
+    text-decoration: none;
+
 }
 
 .link {
