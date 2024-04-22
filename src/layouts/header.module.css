@@ -1,19 +1,11 @@
 p {
     font-size: 28px;
     margin: auto 0 16px 3%;
-}
-
-
-
-.themeIcon {
-    height:40px;
-    width:40px;
-    align-self: flex-end;
-    padding-bottom: 4px;
+    color : var(--text);
 }
 
 .link {
-    color:black;
+    color: var(--link);
     text-decoration: none;
     font-size:28px;
     align-self: flex-end;
@@ -22,9 +14,8 @@ p {
 .header{
     display:flex;
     justify-content: space-between;
-    /* 下側に影をつける */
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     height:84px;
+    box-shadow: var(--box-shadow);
 }
 
 ul {

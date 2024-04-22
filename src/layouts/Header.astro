@@ -1,12 +1,12 @@
 ---
-import sun from "../../public/sun.svg";
 import styles from "./header.module.css";
+import ThemeToggle from "../components/ThemeToggle.astro";
 ---
 
-<div class={styles.header}>
+<div class={styles.header} class="">
   <p>kAsA's website</p>
-  <ul>
-    <li class="links">
+  <ul class="nav-links">
+    <li>
       <a href="/about" class={styles.link}>About</a>
     </li>
     <li>
@@ -16,7 +16,7 @@ import styles from "./header.module.css";
       <a href="/works" class={styles.link}>Works</a>
     </li>
     <li>
-      <img src={sun.src} alt="sun" class={styles.themeIcon} />
+      <ThemeToggle />
     </li>
   </ul>
 </div>
