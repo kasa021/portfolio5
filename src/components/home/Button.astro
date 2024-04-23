@@ -1,0 +1,24 @@
+---
+import styles from "./Button.module.css";
+interface Props {
+  title: string;
+  href: string;
+  buttonColor: string;
+  linkTextColor: string;
+  border: string;
+}
+
+const { title, href, buttonColor, linkTextColor, border }: Props = Astro.props;
+
+const buttonStyle = {
+  backgroundColor: buttonColor,
+  border: border,
+};
+const linkStyle = {
+  color: linkTextColor,
+};
+---
+
+<button class={styles.linkButton} style={buttonStyle}>
+  <a href={href} class={styles.link} style={linkStyle}>{title}</a>
+</button>

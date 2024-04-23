@@ -1,0 +1,12 @@
+button {
+    height: 60px;
+    width: 190px;
+    border-radius: 10px;
+    border: none;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 28px;
+    
+}

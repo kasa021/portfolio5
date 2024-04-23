@@ -3,6 +3,10 @@
     --text: #fff;
     --link: #fff;
     --box-shadow: 0 2px 4px rgba(149, 149, 149, 0.3);
+    --button-color: #f64a0c;
+    --button-text-color: #000;
+    --about-button-border: 1px solid rgb(55, 55, 55);
+    --about-button-color: #1f1f1f;
 }
 
 .light {
@@ -10,4 +14,8 @@
     --text: #000;
     --link: #000;
     --box-shadow: 0 2px 4px rgba(35, 35, 35, 0.2);
+    --button-color: #f64a0c;
+    --button-text-color: #fff;
+    --about-button-border: 1px solid #dddddd;
+    --about-button-color: #fcfcfc;
 }

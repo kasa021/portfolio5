@@ -1,6 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/home/Button.astro";
 ---
 
 <Layout title="kAsA's website">
+  <Button
+    title="ブログへ"
+    href="/blogs"
+    buttonColor="var(--button-color)"
+    linkTextColor="var(--button-text-color)"
+    border="none"
+  />
+  <Button
+    title="About me"
+    href="/about"
+    buttonColor="var(--about-button-color)"
+    linkTextColor="var(--link)"
+    border="var(--about-button-border)"
+  />
 </Layout>
