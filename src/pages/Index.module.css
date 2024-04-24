@@ -26,26 +26,24 @@
 .icon{
     /*　丸くする */
     border-radius: 50%;
-    width:100%;
-    height:auto;
-    max-width: 300px;
-    /* 上下の真ん中に表示 */
-    margin: auto 0;
+    margin: auto;
+    min-width: 200px;
+    max-height: 360px;
+
 }
 
 .iconDiv{
-    grid-area: 3 / 1 / 4 / 2;
     display:flex;
-    margin: 0 auto 0 32px;
+    margin-left: 16px;
 }
 
 .intro {
     display: grid;
+    width: 100%;
     grid-template-columns: 1fr;
     grid-template-rows: 100px 1fr 100px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    margin:0 0 0 auto;
 }
 
 .linkButtonsChi{
@@ -61,5 +59,19 @@
 
 .introWrapper {
     display: flex;
-    margin-top: 80px;
+    width: auto;
+    gap: 0;
+}
+
+.articleH2 {
+    font-size:40px;
+}
+
+.main {
+    max-width: calc(100% / 1.6);
+    width: 100%;
+    margin: 5rem auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

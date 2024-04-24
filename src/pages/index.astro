@@ -7,39 +7,44 @@ import styles from "./Index.module.css";
 ---
 
 <Layout title="kAsA's website">
-  <div class={styles.introWrapper}>
-    <div class={styles.intro}>
-      <h1 class={styles.heading}>Hello,I'm kAsA.</h1>
-      <p class={styles.expla}>
-        kAsAという名前で活動しています。大学4年生です。<br
-        />このサイトでは、勉強したことや好きなことをアウトプットしていきます。<br
-        />X(旧Twitter )やGithubも載せておくので良かったらフォローして下さい。
-      </p>
-      <div class={styles.linkButtonsChi}>
-        <Button
-          title="ブログへ"
-          href="/blogs"
-          buttonColor="var(--button-color)"
-          linkTextColor="var(--button-text-color)"
-          border="none"
-        />
-        <Button
-          title="About me"
-          href="/about"
-          buttonColor="var(--about-button-color)"
-          linkTextColor="var(--link)"
-          border="var(--about-button-border)"
-        />
-        <a href="https://github.com/kasa021">
-          <img src="/github.svg" class={styles.github} />
-        </a>
-        <a href="https://twitter.com/kasa_ame__">
-          <img src="/X.svg" class={styles.X} />
-        </a>
+  <div class={styles.main}>
+    <div class={styles.introWrapper}>
+      <div class={styles.intro}>
+        <h1 class={styles.heading}>Hello,I'm kAsA.</h1>
+        <p class={styles.expla}>
+          kAsAという名前で活動しています。大学4年生です。<br
+          />このサイトでは、勉強したことや好きなことをアウトプットしていきます。<br
+          />X(旧Twitter )やGithubも載せておくので良かったらフォローして下さい。
+        </p>
+        <div class={styles.linkButtonsChi}>
+          <Button
+            title="ブログへ"
+            href="/blogs"
+            buttonColor="var(--button-color)"
+            linkTextColor="var(--button-text-color)"
+            border="none"
+          />
+          <Button
+            title="About me"
+            href="/about"
+            buttonColor="var(--about-button-color)"
+            linkTextColor="var(--link)"
+            border="var(--about-button-border)"
+          />
+          <a href="https://github.com/kasa021">
+            <img src="/github.svg" class={styles.github} />
+          </a>
+          <a href="https://twitter.com/kasa_ame__">
+            <img src="/X.svg" class={styles.X} />
+          </a>
+        </div>
+      </div>
+      <div class={styles.iconDiv}>
+        <img src="/favicon.webp" class={styles.icon} />
       </div>
     </div>
-    <div class={styles.iconDiv}>
-      <img src="/favicon.webp" class={styles.icon} />
-    </div>
+    <div>
+    <h2 class = {styles.articleH2}>最近の記事</h2>
+  </div>
   </div>
 </Layout>
