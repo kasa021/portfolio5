@@ -63,15 +63,20 @@
     gap: 0;
 }
 
-.articleH2 {
-    font-size:40px;
-}
-
 .main {
     max-width: calc(100% / 1.6);
     width: 100%;
-    margin: 5rem auto auto;
+    margin: 8em auto auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.articleH2 {
+    font-size:40px;
+    margin: 0;
+}
+
+.articlePart {
+    margin: 2rem 0;
 }
