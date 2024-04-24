@@ -1,0 +1,23 @@
+.icon {
+    display: inline-block;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0.5rem 0 0 1rem;
+}
+
+.h{
+    display: inline-block;
+    font-size:40px;
+    margin: 0;
+}
+
+.aboutH {
+    white-space: nowrap;
+    height: 4rem;
+}
+
+.intro{
+    font-size:20px;
+    padding-left: 2rem;
+}

@@ -1,7 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import AboutComponent from "../components/About/About.astro";
+import styles from "./About.module.css";
 ---
 
 <Layout title="kAsA's website">
-  <p>about</p>
+  <div class={styles.main}>
+    <AboutComponent />
+  </div>
 </Layout>
