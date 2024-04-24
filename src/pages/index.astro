@@ -7,7 +7,7 @@ import styles from "./Index.module.css";
 ---
 
 <Layout title="kAsA's website">
-  <div class = {styles.introWrapper}>
+  <div class={styles.introWrapper}>
     <div class={styles.intro}>
       <h1 class={styles.heading}>Hello,I'm kAsA.</h1>
       <p class={styles.expla}>
@@ -30,8 +30,12 @@ import styles from "./Index.module.css";
           linkTextColor="var(--link)"
           border="var(--about-button-border)"
         />
-        <img src="/github.svg" class={styles.github} />
-        <img src="/X.svg" class={styles.X} />
+        <a href="https://github.com/kasa021">
+          <img src="/github.svg" class={styles.github} />
+        </a>
+        <a href="https://twitter.com/kasa_ame__">
+          <img src="/X.svg" class={styles.X} />
+        </a>
       </div>
     </div>
     <div class={styles.iconDiv}>
