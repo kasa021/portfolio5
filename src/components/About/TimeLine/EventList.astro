@@ -11,20 +11,13 @@ interface Props {
   description: string;
 }
 
-const {
-  date,
-  displayDate,
-  imageURL,
-  URL,
-  isLine,
-  head,
-  description,
-}: Props = Astro.props;
+const { date, displayDate, imageURL, URL, isLine, head, description }: Props =
+  Astro.props;
 ---
 
 <tr class={styles.tr}>
   <td class={styles.date}>
-    <time datetime={date} class = {styles.dateSt}>{displayDate}</time>
+    <time datetime={date} class={styles.dateSt}>{displayDate}</time>
   </td>
   <td class={styles.imagetd}>
     <div class={styles.imageDev}>
@@ -34,9 +27,18 @@ const {
     </div>
     {isLine && <span class={styles.verticalLine} />}
   </td>
-  <td>
+  <td class={styles.work}>
     <span><strong class={styles.head}>{head}</strong></span>
-    <p class={styles.description}>{description}</p>
+    <p class={styles.description}>
+      {
+        description.split("\n").map((line, index) => (
+          <Fragment key={index}>
+            {line}
+            <br />
+          </Fragment>
+        ))
+      }
+    </p>
     <slot />
   </td>
 </tr>
