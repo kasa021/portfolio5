@@ -7,6 +7,7 @@
     --button-text-color: #ffffff;
     --about-button-border: 1px solid rgb(55, 55, 55);
     --about-button-color: #1f1f1f;
+    --vertical-line-color: #9f9f9f;
 }
 
 .light {
@@ -18,4 +19,5 @@
     --button-text-color: #fff;
     --about-button-border: 1px solid #dddddd;
     --about-button-color: #fcfcfc;
+    --vertical-line-color: #a7a7a7;
 }

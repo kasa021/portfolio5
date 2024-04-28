@@ -43,6 +43,8 @@
     grid-template-rows: 100px 1fr 100px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 .linkButtonsChi{

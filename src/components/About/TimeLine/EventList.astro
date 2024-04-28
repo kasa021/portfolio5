@@ -1,0 +1,42 @@
+---
+import styles from "./EventList.module.css";
+
+interface Props {
+  date: string;
+  displayDate: string;
+  imageURL: string;
+  URL: string;
+  isLine: boolean;
+  head: string;
+  description: string;
+}
+
+const {
+  date,
+  displayDate,
+  imageURL,
+  URL,
+  isLine,
+  head,
+  description,
+}: Props = Astro.props;
+---
+
+<tr class={styles.tr}>
+  <td class={styles.date}>
+    <time datetime={date} class = {styles.dateSt}>{displayDate}</time>
+  </td>
+  <td class={styles.imagetd}>
+    <div class={styles.imageDev}>
+      <a href={URL} class={styles.imageA}>
+        <img src={imageURL} class={styles.image} />
+      </a>
+    </div>
+    {isLine && <span class={styles.verticalLine} />}
+  </td>
+  <td>
+    <span><strong class={styles.head}>{head}</strong></span>
+    <p class={styles.description}>{description}</p>
+    <slot />
+  </td>
+</tr>

@@ -1,0 +1,27 @@
+---
+import styles from "./TimeLine.module.css";
+import EventList from "./EventList.astro";
+---
+
+<div>
+  <h1 class={styles.h1}>Timeline</h1>
+  <table>
+    <tbody>
+      <EventList
+        date="2023-12-01"
+        ,
+        displayDate="Dec 2023"
+        ,
+        imageURL="/Images/Unics.jpeg"
+        ,
+        URL=""
+        ,
+        isLine={true}
+        ,
+        head="Unics"
+        ,
+        description="Unics is a project that aims to create a "
+      />
+    </tbody>
+  </table>
+</div>
