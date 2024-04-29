@@ -1,6 +1,11 @@
 ---
 import styles from "./TimeLine.module.css";
 import EventList from "./EventList.astro";
+import Unics from "../../../assets/Images/Unics.jpeg";
+import DrsPrime from "../../../assets/Images/drprime.png";
+import Ielove from "../../../assets/Images/ielove.jpg";
+import NS from "../../../assets/Images/NS.jpeg";
+import SU from "../../../assets/Images/SU.jpg";
 ---
 
 <div>
@@ -10,7 +15,7 @@ import EventList from "./EventList.astro";
       <EventList
         date="2023-12-01"
         displayDate="Dec 2023"
-        imageURL="/Images/Unics.jpeg"
+        image={Unics}
         URL="https://www.wantedly.com/companies/company_8514024"
         isLine={true}
         head="Unics"
@@ -19,7 +24,7 @@ import EventList from "./EventList.astro";
       <EventList
         date="2023-11-01"
         displayDate="Nov 2023"
-        imageURL="/Images/drprime.png"
+        image={DrsPrime}
         URL="https://drsprime.com/"
         isLine={true}
         head="Dr's Prime"
@@ -28,7 +33,7 @@ import EventList from "./EventList.astro";
       <EventList
         date="2023-9-01"
         displayDate="Sep 2023"
-        imageURL="/Images/ielove.jpg"
+        image={Ielove}
         URL="https://www.ielove-group.jp/"
         isLine={true}
         head="いえらぶGROUP"
@@ -37,7 +42,7 @@ import EventList from "./EventList.astro";
       <EventList
         date="2023-8-01"
         displayDate="Aug 2023"
-        imageURL="/Images/NS.jpeg"
+        image={NS}
         URL="https://www.nssol.nipponsteel.com/"
         isLine={true}
         head="日鉄ソリューションズ"
@@ -46,7 +51,7 @@ import EventList from "./EventList.astro";
       <EventList
         date="2021-4-01"
         displayDate="Apr 2021"
-        imageURL="/Images/SU.jpg"
+        image={SU}
         URL="https://www.wantedly.com/companies/company_8514024"
         isLine={false}
         head="Unics"
