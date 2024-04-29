@@ -2,8 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/home/Button.astro";
 import styles from "./_Index.module.css";
-// import github from "../../public/github.svg";
-// import X from "../../public/X.svg";
+import { Image } from "astro:assets";
+import Umbrella from "../assets/Images/umbrella.png";
 ---
 
 <Layout title="kAsA's website">
@@ -56,7 +56,7 @@ import styles from "./_Index.module.css";
         </div>
       </div>
       <div class={styles.iconDiv}>
-        <img src="/favicon.webp" class={styles.icon} />
+        <Image src={Umbrella} alt="" class={styles.icon} />
       </div>
     </div>
     <div class={styles.articlePart}>

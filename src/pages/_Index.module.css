@@ -28,11 +28,12 @@
     border-radius: 50%;
     margin: auto;
     width: 100%;
+    height: auto;
 }
 
 .iconDiv{
     display:flex;
-    margin-left: 16px;
+    margin-left: auto;
     width: auto;
     max-width: 360px;
     min-width: 200px;
@@ -41,6 +42,7 @@
 .intro {
     display: grid;
     width: 100%;
+    max-width: 720px;
     grid-template-columns: 1fr;
     grid-template-rows: 100px 1fr 100px;
     grid-column-gap: 0px;
