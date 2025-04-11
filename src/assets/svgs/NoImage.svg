@@ -1,0 +1,15 @@
+<!-- fallback-square.svg として保存 -->
+<svg
+  width="300"
+  height="300"
+  viewBox="0 0 300 300"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="placeholderTitle placeholderDesc"
+>
+  <title id="placeholderTitle">Placeholder Image</title>
+  <desc id="placeholderDesc">
+    画像が設定されていない場合に表示する全体がグレーの正方形プレースホルダー画像
+  </desc>
+  <rect x="0" y="0" width="300" height="300" fill="#808080" />
+</svg>
