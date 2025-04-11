@@ -1,7 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const allBlogs = await Astro.glob("/src/pages/blogs/*.md");
 ---
 
 <Layout title="kAsA's website">
-  <p>blogs</p>
+  <div>
+    <h1>ブログ一覧</h1>
+    <ul>
+      {
+        allBlogs.map((blog) => (
+          <li>
+            <a href={blog.url} class="text-blue-500 hover:underline">
+              {blog.frontmatter.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </Layout>
