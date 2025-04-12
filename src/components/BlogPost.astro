@@ -1,0 +1,20 @@
+---
+// BlogPost.astro
+export interface BlogPostProps {
+    title: string;
+    date: string;
+    content: string;
+}
+
+const { title, date, content } = Astro.props;
+---
+
+<article>
+    <header>
+        <h1>{title}</h1>
+        <p>{date}</p>
+    </header>
+    <section>
+        {content}
+    </section>
+</article>

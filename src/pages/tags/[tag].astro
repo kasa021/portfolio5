@@ -1,0 +1,64 @@
+---
+export const prerender = true;
+import Layout from "../../layouts/Layout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import type { MarkdownInstance } from "astro";
+
+// Post 型の定義（frontmatter は title と tags を持つ）
+interface Post {
+    url: string;
+    frontmatter: {
+        title: string;
+        tags: string[];
+    };
+}
+
+type TagPath = {
+    params: { tag: string };
+    props: { posts: Post[] };
+};
+
+export async function getStaticPaths(): Promise<TagPath[]> {
+    const allMarkdownPosts = (await Astro.glob(
+        "../blogs/*.md",
+    )) as MarkdownInstance<Post["frontmatter"]>[];
+
+    const allPosts: Post[] = allMarkdownPosts.map((mdPost) => ({
+        url: mdPost.url ?? "",
+        frontmatter: mdPost.frontmatter,
+    }));
+    console.log(allPosts);
+
+    const uniqueTags = [
+        ...new Set(allPosts.flatMap((p) => p.frontmatter.tags)),
+    ];
+    console.log(uniqueTags);
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((p) =>
+            p.frontmatter.tags.includes(tag),
+        );
+        return { params: { tag }, props: { posts: filteredPosts } };
+    });
+}
+
+// Astro.params / Astro.props
+const tag: string | undefined = Astro.params?.tag;
+const posts: Post[] =
+    (Astro.props as { posts?: Post[] } | undefined)?.posts ?? [];
+---
+
+<Layout title={tag}>
+    <p>{tag} のタグが付いた記事</p>
+
+    {
+        posts.length === 0 ? (
+            <p>このタグの記事はまだありません。</p>
+        ) : (
+            <ul>
+                {posts.map((post) => (
+                    <BlogPost url={post.url} title={post.frontmatter.title} />
+                ))}
+            </ul>
+        )
+    }
+</Layout>

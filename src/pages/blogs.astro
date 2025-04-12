@@ -1,16 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import styles from "./_Blog.module.css";
 const allBlogs = await Astro.glob("/src/pages/blogs/*.md");
 ---
 
 <Layout title="kAsA's website">
-  <div>
+  <div class={styles.main}>
     <h1>ブログ一覧</h1>
     <ul>
       {
         allBlogs.map((blog) => (
           <li>
-            <a href={blog.url} class="text-blue-500 hover:underline">
+            <a href={blog.url} class={styles.link}>
               {blog.frontmatter.title}
             </a>
           </li>
