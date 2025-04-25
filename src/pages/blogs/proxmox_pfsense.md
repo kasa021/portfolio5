@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Proxmox + pfSense で自宅ネットワークにルータを構築する手順
 description: "Proxmox + pfSense で自宅ネットワークにルータを構築する手順"
-date: "2024-04-26"
+date: "2024/04/26"
 authors: ["kasa021"]
 tags: ["proxmox", "pfSense", "ネットワーク"]
 ---

@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Proxmox VE の apt-get update で 401 Unauthorized エラーを解決した話
 description: "Proxmox VE の apt-get update で 401 Unauthorized エラーを解決した話"
-date: "2024-04-10"
+date: "2024/04/10"
 authors: ["kasa021"]
 tags: ["proxmox", "apt-get", "エラー"]
 ---

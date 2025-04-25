@@ -12,7 +12,9 @@ const allBlogs = await Astro.glob("/src/pages/blogs/*.md");
         allBlogs.map((blog) => (
           <li>
             <a href={blog.url} class={styles.link}>
-              {blog.frontmatter.title}
+              <h2>{blog.frontmatter.title}</h2>
+              <span class={styles.date}>{blog.frontmatter.date}</span>
+              <span class={styles.tags}>{blog.frontmatter.tags.join(", ")}</span>
             </a>
           </li>
         ))

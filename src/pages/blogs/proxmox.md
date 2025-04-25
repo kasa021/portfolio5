@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "proxmoxのWeb GUIにアクセスできない話"
-description: "関数・ループ・配列など、競プロでよく使われるより実践的なC++の使い方を紹介します。"
-date: "2024-03-24"
+description: "関数・ループ・配列など、競プロでよく使われるより実践的なC++"
+date: "2024/03/24"
 authors: ["kasa021"]
 tags: ["proxmox", "web gui", "ネットワーク"]
 ---
