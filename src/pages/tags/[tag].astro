@@ -21,7 +21,7 @@ type TagPath = {
 
 export async function getStaticPaths(): Promise<TagPath[]> {
     const allBlogs: MarkdownInstance<Record<string, any>>[] = await Astro.glob(
-        "/src/pages/blogs/*.md",
+        "../blogs/*.md",
     );
     console.log(allBlogs);
 

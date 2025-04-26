@@ -4,7 +4,7 @@ title: "proxmoxのWeb GUIにアクセスできない話"
 description: "関数・ループ・配列など、競プロでよく使われるより実践的なC++"
 date: "2024/03/24"
 authors: ["kasa021"]
-tags: ["proxmox", "web gui", "ネットワーク"]
+tags: ["proxmox", "web-gui", "ネットワーク"]
 ---
 
 ## はじめに

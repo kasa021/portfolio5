@@ -2,19 +2,17 @@
 // BlogPost.astro
 export interface BlogPostProps {
     title: string;
-    date: string;
-    content: string;
+    url: string;
 }
 
-const { title, date, content } = Astro.props;
+const { title, url } = Astro.props;
 ---
 
 <article>
     <header>
-        <h1>{title}</h1>
-        <p>{date}</p>
+        <a href={url}>
+            <h1>{title}</h1>
+        </a>
     </header>
-    <section>
-        {content}
-    </section>
+
 </article>

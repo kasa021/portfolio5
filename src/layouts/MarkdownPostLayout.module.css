@@ -1,0 +1,5 @@
+.main {
+    max-width: calc(85%);
+    margin: 3em auto auto;
+    color: var(--text);
+}

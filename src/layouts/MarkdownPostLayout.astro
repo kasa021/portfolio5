@@ -1,10 +1,13 @@
 ---
 import Layout from "./Layout.astro";
+import style from "./MarkdownPostLayout.module.css";
 const { frontmatter } = Astro.props;
 ---
 <Layout title={frontmatter.title}>
-  <h1>{frontmatter.title}</h1>
-  <p>投稿日: {frontmatter.date.toString().slice(0, 10)}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <slot />
+  <div class={style.main}>
+    <h1>{frontmatter.title}</h1>
+    <p>投稿日: {frontmatter.date.toString().slice(0, 10)}</p>
+    <p><em>{frontmatter.description}</em></p>
+    <slot />
+  </div>
 </Layout>

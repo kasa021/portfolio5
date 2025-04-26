@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import style from "./index.module.css";
+const allBlogs = await Astro.glob("/src/pages/blogs/*.md");
+const tags = [
+    ...new Set(allBlogs.map((post: any) => post.frontmatter.tags).flat()),
+];
+const pageTitle = "Tag Index";
+---
+
+<Layout title={pageTitle}>
+    <div class={style.tags}>
+        {
+            tags.map((tag) => (
+                <p>
+                    <a href={`/tags/${tag}`}>{tag}</a>
+                </p>
+            ))
+        }
+    </div>
+</Layout>
