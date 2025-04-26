@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 import type { MarkdownInstance } from "astro";
 
+export const prerender = true;
+
 // Post 型の定義（frontmatter は title と tags を持つ）
 interface Post {
     url: string;
@@ -18,28 +20,34 @@ type TagPath = {
 };
 
 export async function getStaticPaths(): Promise<TagPath[]> {
-    const allMarkdownPosts = (await Astro.glob(
-        "../blogs/*.md",
-    )) as MarkdownInstance<Post["frontmatter"]>[];
+    const allBlogs: MarkdownInstance<Record<string, any>>[] = await Astro.glob(
+        "/src/pages/blogs/*.md",
+    );
+    console.log(allBlogs);
 
-    const allPosts: Post[] = allMarkdownPosts.map((mdPost) => ({
-        url: mdPost.url ?? "",
-        frontmatter: mdPost.frontmatter,
-    }));
-
-    const uniqueTags = [
-        ...new Set(allPosts.flatMap((p) => p.frontmatter.tags)),
+    const uniqueTags: string[] = [
+        ...new Set(allBlogs.map((blog) => blog.frontmatter.tags).flat()),
     ];
-    return uniqueTags.map((tag) => {
-        const filteredPosts = allPosts.filter((p) =>
-            p.frontmatter.tags.includes(tag),
+    console.log(uniqueTags);
+
+    return uniqueTags.map((tag: string) => {
+        const filteredPosts = allBlogs.filter((blog) =>
+            blog.frontmatter.tags.includes(tag),
         );
-        return { params: { tag }, props: { posts: filteredPosts } };
+        const typedPosts: Post[] = filteredPosts.map((post) => ({
+            url: post.url ?? "",
+            frontmatter: {
+                title: post.frontmatter.title,
+                tags: post.frontmatter.tags,
+            },
+        }));
+        console.log(typedPosts);
+        return { params: { tag }, props: { posts: typedPosts } };
     });
 }
 
 // Astro.params / Astro.props
-const tag: string | undefined = Astro.params?.tag;
+const tag: string = Astro.params.tag || "";
 const posts: Post[] =
     (Astro.props as { posts?: Post[] } | undefined)?.posts ?? [];
 ---
