@@ -46,7 +46,7 @@
 
 /* ===== 本文要素 ===== */
 .main a {
-  color: #2c83ff;
+  color: var(--link);
   text-decoration: none;
   border-bottom: 1px solid rgba(44,131,255,0.35);
   transition: border 0.15s;
@@ -163,15 +163,20 @@
 /* ─ ラッパ（本文＋TOC）─ */
 .wrapper {
   display: flex;
-  gap: 3rem;
+  column-gap: 3rem;                             /* 子要素間の余白 */
+  max-width: calc(720px + 240px + 3rem);        /* ＝本文 + TOC + gap  */
+  margin: 3rem auto 6rem;                       /* ← 全体を中央寄せ   */
 }
+
+
+
 
 /* ─ 戻るボタン ─ */
 .back {
   display: inline-block;
   margin-bottom: 1rem;
   font-size: 0.9rem;
-  color: #2c83ff;
+  color: var(--text);
   text-decoration: none;
 }
 .back:hover { text-decoration: underline; }
@@ -208,11 +213,14 @@
 }
 .toc a {
   display: block;                      /* 行全体クリック可能に */
-  color: #4b5563;
+  color: var(--text);
   text-decoration: none;
   max-width: 100%;
 }
-.toc a:hover { color: #2c83ff; }
+.toc p {
+    color: var(--text);
+}
+.toc a:hover { color: var(--link); }
 .depth3 { padding-left: 0.75rem; }     /* h3 字下げ */
 
 /* ─ モバイルでは TOC を非表示 ─ */
