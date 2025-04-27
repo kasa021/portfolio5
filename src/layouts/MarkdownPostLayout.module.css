@@ -191,7 +191,6 @@
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   overflow-x: hidden;                  /* 横スクロール禁止 */
-  border-left: 1px solid #e5e7eb;
   padding-left: 1rem;
 }
 
