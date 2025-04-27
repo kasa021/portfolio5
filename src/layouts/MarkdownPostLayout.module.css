@@ -1,12 +1,20 @@
+/* ============================================================= */
+/*  MarkdownPostLayout.module.css  —  最終完全版                  */
+/* ============================================================= */
+
 /* ===== 基本レイアウト ===== */
 .main {
-  max-width: 720px;          /* 読みやすい横幅 */
+  max-width: 800px;                      /* 読みやすい横幅 */
   margin: 3rem auto 6rem;
-  padding: 0 1.2rem;         /* モバイルの左右余白 */
+  padding: 0 1.2rem;                     /* モバイル左右余白 */
   line-height: 1.75;
   color: var(--text, #1a1a1a);
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
-  word-break: break-word;    /* 長い URL などで崩れない */
+  word-break: break-word;                /* 長い URL などで崩れない */
+
+  /* ↓ 競合対策：フレックス子が縮める余地を持つ */
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 /* ===== タイトル・メタ情報 ===== */
@@ -15,13 +23,11 @@
   font-weight: 700;
   margin-bottom: 0.8rem;
 }
-
-.main p:first-of-type {      /* 投稿日 */
+.main p:first-of-type {                  /* 投稿日 */
   font-size: 0.9rem;
   color: var(--text);
   margin-bottom: 0.4rem;
 }
-
 .main em {
   font-style: normal;
   display: block;
@@ -32,7 +38,7 @@
 /* ===== 見出し ===== */
 .main h2, .main h3, .main h4 {
   font-weight: 600;
-  scroll-margin-top: 96px;   /* アンカーリンク時にヘッダと被らない */
+  scroll-margin-top: 96px;               /* アンカーリンク位置調整 */
 }
 .main h2 { font-size: 1.6rem; margin: 2.4rem 0 1rem; }
 .main h3 { font-size: 1.3rem; margin: 2rem 0 0.8rem; }
@@ -51,9 +57,14 @@
   padding-left: 1.4em;
   margin: 1rem 0;
 }
-.main li { margin: 0.4rem 0;
-    display: list-item;
- }
+.main li {
+  margin: 0.4rem 0;
+  display: list-item;
+}
+.main li > p {                           /* リスト内 <p> を行内化 */
+  display: inline;
+  margin: 0;
+}
 
 .main blockquote {
   margin: 1.5rem 0;
@@ -63,13 +74,7 @@
   color: var(--text);
 }
 
-.main li > p {
-  display: inline;      /* <p> をインライン化して改行を潰す */
-  margin: 0;            /* デフォルト余白を除去 */
-}
-
-
-/* ===== コードブロック ===== */
+/* ===== コード ===== */
 .main pre {
   overflow-x: auto;
   padding: 1rem 1.2rem;
@@ -81,14 +86,24 @@
   color: var(--code-text-color);
   font-family: "SFMono-Regular", Consolas, Menlo, monospace;
 }
-.main code:not(pre code) {   /* インラインコード */
+.main code:not(pre code) {               /* インラインコード */
+  display: inline-block;
   background: var(--inline-code-background-color);
   padding: 0.15em 0.4em;
   border-radius: 4px;
   font-size: 0.9rem;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;                   /* PC: 横スクロール優先 */
+  word-break: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
-
+/* スマホ幅は折り返しを許可 */
+@media (max-width: 480px) {
+  .main code:not(pre code) { white-space: break-spaces; }
+}
 
 /* ===== 画像 ===== */
 .main img {
@@ -98,19 +113,24 @@
   border-radius: 8px;
 }
 
-/* ===== テーブル ===== */
+/* ===== テーブル（横スクロール対応） ===== */
 .main table {
+  display: block;                        /* 横スクロール領域にする */
   border-collapse: collapse;
   width: 100%;
+  max-width: 100%;
   margin: 1.5rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .main th, .main td {
   border: 1px solid var(--table-header-color);
   padding: 0.6rem 0.8rem;
+  word-break: break-all;                 /* 極端な長語句対策 */
 }
 .main th { background: var(--table-header-color); }
 
-/* ===== タグ ===== */
+/* ===== タグチップ ===== */
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -130,8 +150,79 @@
 .tag a { color: inherit; }
 .tag:hover { background: #dfe9ff; }
 
-/* ===== レスポンシブ微調整 ===== */
+/* ===== レスポンシブ：基本見出しサイズ ===== */
 @media (max-width: 480px) {
   .main h1 { font-size: 1.7rem; }
   .main h2 { font-size: 1.4rem; }
+}
+
+/* ================================================= */
+/* === 戻るボタン／目次（TOC）レイアウト =========== */
+/* ================================================= */
+
+/* ─ ラッパ（本文＋TOC）─ */
+.wrapper {
+  display: flex;
+  gap: 3rem;
+}
+
+/* ─ 戻るボタン ─ */
+.back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #2c83ff;
+  text-decoration: none;
+}
+.back:hover { text-decoration: underline; }
+
+/* ─ サイド目次（TOC）─ */
+.toc {
+  flex: 0 0 240px;                     /* 固定幅 */
+  flex-shrink: 0;                      /* 潰れない */
+  font-size: 0.85rem;
+  position: sticky;
+  top: 96px;                           /* 固定ヘッダー分 */
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  overflow-x: hidden;                  /* 横スクロール禁止 */
+  border-left: 1px solid #e5e7eb;
+  padding-left: 1rem;
+}
+
+.tocTitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* 目次リスト（縦積み） */
+.toc ul {
+  display: block;
+  margin: 0;
+  padding-left: 0;
+}
+.toc li {
+  display: block;
+  margin: 0.25rem 0;
+  white-space: normal;                 /* 折り返し可 */
+}
+.toc a {
+  display: block;                      /* 行全体クリック可能に */
+  color: #4b5563;
+  text-decoration: none;
+  max-width: 100%;
+}
+.toc a:hover { color: #2c83ff; }
+.depth3 { padding-left: 0.75rem; }     /* h3 字下げ */
+
+/* ─ モバイルでは TOC を非表示 ─ */
+@media (max-width: 900px) {
+  .wrapper { flex-direction: column; }
+  .toc     { display: none; }
+}
+
+/* ===== リストマーカー内側表示（p inline 対策） ===== */
+.main ul {
+  list-style: disc inside;
+  padding-left: 0;
 }

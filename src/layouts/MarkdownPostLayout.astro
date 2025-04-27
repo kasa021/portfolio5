@@ -1,24 +1,50 @@
 ---
 import Layout from "./Layout.astro";
 import style from "./MarkdownPostLayout.module.css";
-const { frontmatter } = Astro.props;
+
+const { frontmatter, headings = [] } =
+  Astro.props; /* ← headings が自動で渡る :contentReference[oaicite:0]{index=0} */
 ---
 
 <Layout title={frontmatter.title}>
-  <div class={style.main}>
-    <h1>{frontmatter.title}</h1>
-    <p>投稿日: {frontmatter.date.toString().slice(0, 10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <div class={style.tags}>
-      <p>タグ:</p>
-      {
-        frontmatter.tags.map((tag: string) => (
-          <p class={style.tag}>
-            <a href={`/tags/${tag}`}>{tag}</a>
-          </p>
-        ))
-      }
-    </div>
-    <slot />
+  <div class={style.wrapper}>
+    {/* ===== メイン記事 ===== */}
+    <article class={style.main}>
+      <a href="/blogs" class={style.back}>← 記事一覧へ戻る</a>
+
+      <h1>{frontmatter.title}</h1>
+      <p>投稿日: {frontmatter.date.toString().slice(0, 10)}</p>
+      <p><em>{frontmatter.description}</em></p>
+
+      <div class={style.tags}>
+        <p>タグ:</p>
+        {
+          frontmatter.tags.map((tag: string) => (
+            <p class={style.tag}>
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </p>
+          ))
+        }
+      </div>
+
+      <slot />
+      {/* Markdown 本文 */}
+    </article>
+
+    {/* ===== サイド目次 ===== */}
+    <aside class={style.toc}>
+      <p class={style.tocTitle}>目次</p>
+      <ul>
+        {
+          headings
+            .filter((h: { depth: number; }) => h.depth === 2 || h.depth === 3) /* h2/h3 だけ表示 */
+            .map((h: { depth: number; slug: any; text: unknown; }) => (
+              <li class={h.depth === 3 ? style.depth3 : undefined}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))
+        }
+      </ul>
+    </aside>
   </div>
 </Layout>
