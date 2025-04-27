@@ -1,10 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import style from "./index.module.css";
-const allBlogs = await Astro.glob("/src/pages/blogs/*.md");
+import style from "./_Index.module.css";
+
+const modules = import.meta.glob("/src/pages/blogs/*.md", { eager: true });
+const allBlogs = Object.values(modules);
 const tags = [
     ...new Set(allBlogs.map((post: any) => post.frontmatter.tags).flat()),
 ];
+
 const pageTitle = "Tag Index";
 ---
 

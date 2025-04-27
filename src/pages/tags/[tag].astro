@@ -20,21 +20,22 @@ type TagPath = {
 };
 
 export async function getStaticPaths(): Promise<TagPath[]> {
-    const allBlogs: MarkdownInstance<Record<string, any>>[] = await Astro.glob(
-        "../blogs/*.md",
-    );
-    console.log(allBlogs);
+
+    const modules = import.meta.glob<Post>("/src/pages/blogs/*.md", {
+        eager: true,
+    });
+    const allBlogs: Post[] = Object.values(modules);
 
     const uniqueTags: string[] = [
-        ...new Set(allBlogs.map((blog) => blog.frontmatter.tags).flat()),
+        ...new Set(allBlogs.map((blog: Post) => blog.frontmatter.tags).flat()),
     ];
     console.log(uniqueTags);
 
     return uniqueTags.map((tag: string) => {
-        const filteredPosts = allBlogs.filter((blog) =>
+        const filteredPosts = allBlogs.filter((blog: Post) =>
             blog.frontmatter.tags.includes(tag),
         );
-        const typedPosts: Post[] = filteredPosts.map((post) => ({
+        const typedPosts: Post[] = filteredPosts.map((post: Post) => ({
             url: post.url ?? "",
             frontmatter: {
                 title: post.frontmatter.title,
