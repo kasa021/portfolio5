@@ -86,3 +86,67 @@
 .articlePart {
     margin: 2rem 0;
 }
+
+.articleList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.articleList li {
+    margin: 1rem;
+    padding: 1rem;
+    width: 500px;
+}
+
+.link {
+    width: 100%;
+    height: 90%;
+    display: block;
+    background: var(--background-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    color: var(--link);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* 枠線 */
+    border: 1px solid var(--vertical-line-color);
+}
+
+/* ホバー時のエフェクト */
+.link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 各要素のマージン・フォントサイズ調整 */
+.date {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--subtext);
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.tags {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--subtext);
+    margin-top: 0.25rem;
+    font-size: 1rem;
+}
+
+.description {
+    display: block;
+    font-size: 1rem;
+    color: var(--text);
+    margin-top: 0.75rem;
+}
+
+.link h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
