@@ -14,7 +14,9 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^12.5.1",
+    "@astrojs/preact": "^4.0.10",
     "astro": "^5.7.5",
+    "preact": "^10.26.5",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
