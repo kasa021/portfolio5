@@ -1,7 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import styles from "./_Blog.module.css";
-const allBlogs = await Astro.glob("/src/pages/blogs/*.md");
+
+// ブログ記事の型を定義
+interface BlogPost {
+  url: string;
+  frontmatter: {
+    title: string;
+    date: string;
+    tags: string[];
+  };
+}
+
+const modules = import.meta.glob<BlogPost>("/src/pages/blogs/*.md", {
+  eager: true,
+});
+const allBlogs: BlogPost[] = Object.values(modules);
 ---
 
 <Layout title="kAsA's website">
@@ -14,7 +28,9 @@ const allBlogs = await Astro.glob("/src/pages/blogs/*.md");
             <a href={blog.url} class={styles.link}>
               <h2>{blog.frontmatter.title}</h2>
               <span class={styles.date}>{blog.frontmatter.date}</span>
-              <span class={styles.tags}>{blog.frontmatter.tags.join(", ")}</span>
+              <span class={styles.tags}>
+                {blog.frontmatter.tags.join(", ")}
+              </span>
             </a>
           </li>
         ))
