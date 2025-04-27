@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 import type { MarkdownInstance } from "astro";
+import styles from "../_Blog.module.css";
 
 export const prerender = true;
 
@@ -11,6 +12,7 @@ interface Post {
     frontmatter: {
         title: string;
         tags: string[];
+        date: string;
     };
 }
 
@@ -20,7 +22,6 @@ type TagPath = {
 };
 
 export async function getStaticPaths(): Promise<TagPath[]> {
-
     const modules = import.meta.glob<Post>("/src/pages/blogs/*.md", {
         eager: true,
     });
@@ -40,6 +41,7 @@ export async function getStaticPaths(): Promise<TagPath[]> {
             frontmatter: {
                 title: post.frontmatter.title,
                 tags: post.frontmatter.tags,
+                date: post.frontmatter.date,
             },
         }));
         console.log(typedPosts);
@@ -54,17 +56,29 @@ const posts: Post[] =
 ---
 
 <Layout title={tag}>
-    <p>{tag} のタグが付いた記事</p>
+    <div class={styles.main}>
+        <p>{tag} のタグが付いた記事</p>
 
-    {
-        posts.length === 0 ? (
-            <p>このタグの記事はまだありません。</p>
-        ) : (
-            <ul>
-                {posts.map((post) => (
-                    <BlogPost url={post.url} title={post.frontmatter.title} />
-                ))}
-            </ul>
-        )
-    }
+        {
+            posts.length === 0 ? (
+                <p>このタグの記事はまだありません。</p>
+            ) : (
+                <ul>
+                    {posts.map((post) => (
+                        <li>
+                            <a href={post.url} class={styles.link}>
+                                <h2>{post.frontmatter.title}</h2>
+                                <span class={styles.date}>
+                                    {post.frontmatter.date}
+                                </span>
+                                <span class={styles.tags}>
+                                    {post.frontmatter.tags.join(", ")}
+                                </span>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            )
+        }
+    </div>
 </Layout>
