@@ -3,11 +3,43 @@ import Layout from "./Layout.astro";
 import style from "./MarkdownPostLayout.module.css";
 const { frontmatter } = Astro.props;
 ---
+
 <Layout title={frontmatter.title}>
   <div class={style.main}>
     <h1>{frontmatter.title}</h1>
     <p>投稿日: {frontmatter.date.toString().slice(0, 10)}</p>
     <p><em>{frontmatter.description}</em></p>
+    <div class="tags">
+      <p>タグ:</p>
+      {
+        frontmatter.tags.map((tag: string) => (
+          <p class="tag">
+            <a href={`/tags/${tag}`}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
     <slot />
   </div>
 </Layout>
+
+<style>
+  a {
+    color: var(--link);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: var(--background-color);
+    color: var(--text);
+  }
+</style>
