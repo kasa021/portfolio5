@@ -8,6 +8,11 @@
     --about-button-border: 1px solid rgb(55, 55, 55);
     --about-button-color: #1f1f1f;
     --vertical-line-color: #9f9f9f;
+    --table-header-color: #414141;
+    --tag-text-color: #f64a0c;
+    --tag-background-color: #fff7f5;
+    --inline-code-background-color: #313131;
+    --code-text-color: #f1f1f1;
 }
 
 .light {
@@ -20,4 +25,9 @@
     --about-button-border: 1px solid #dddddd;
     --about-button-color: #fcfcfc;
     --vertical-line-color: #a7a7a7;
+    --table-header-color: #dcdcdc;
+    --tag-text-color: #f64a0c;
+    --tag-background-color: #fff7f5;
+    --inline-code-background-color: #eeeaea;
+    --code-text-color: #f1f1f1;
 }

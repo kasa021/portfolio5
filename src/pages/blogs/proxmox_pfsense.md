@@ -62,16 +62,16 @@ Proxmox上で pfSense VM に以下のように設定:
 
 pfSense 起動後、以下のようになっていることを確認:
 
-- WAN (vtnet0): 192.168.0.x (DHCP)
+WAN (vtnet0): 192.168.0.x (DHCP)
     
-- LAN (vtnet1): 192.168.1.1 (Static IP)
+LAN (vtnet1): 192.168.1.1 (Static IP)
     
 
 ### ステップ 3: pfSense WebGUIへアクセス
 
-- PC1 から [https://192.168.1.1](https://192.168.1.1/) へアクセス
+PC1 から [https://192.168.1.1](https://192.168.1.1/) へアクセス
     
-- 初期ユーザー: `admin` / パスワード: `pfsense`
+初期ユーザー: `admin` / パスワード: `pfsense`
     
 
 セットアップウィザードはスキップしてOK
@@ -84,11 +84,11 @@ WebGUIから:
 Services > DHCP Server > LAN
 ```
 
-- DHCP: Enable にチェック
+DHCP: Enable にチェック
     
-- Range: `192.168.1.100` ～ `192.168.1.200`
+Range: `192.168.1.100` ～ `192.168.1.200`
     
-- DNS Server: `192.168.1.1`, `1.1.1.1`
+DNS Server: `192.168.1.1`, `1.1.1.1`
     
 
 ### ステップ 5: NAT の確認
@@ -106,35 +106,35 @@ Firewall > NAT > Outbound
 
 ## ✅ 動作確認
 
-- PC1 に `192.168.1.100` が割り当てられる
+PC1 に `192.168.1.100` が割り当てられる
     
-- `ping 192.168.1.1` → OK
+`ping 192.168.1.1` → OK
     
-- `ping 8.8.8.8` → OK
+`ping 8.8.8.8` → OK
     
-- `curl http://example.com` → OK
+`curl http://example.com` → OK
     
 
 ---
 
 ## 🎉 完成したネットワーク構成
 
-- pfSense が NAT ルータとして機能
-    
-- LAN配下のPCがインターネットへアクセス可
-    
-- Proxmox上に追加でVM1/VM2もLANに参加可
+pfSense が NAT ルータとして機能
+
+LAN配下のPCがインターネットへアクセス可    
+
+Proxmox上に追加でVM1/VM2もLANに参加可
     
 
 ---
 
 ## ☕️ 仕上げについて
 
-- pfSense admin パスワードは後で変更すること
+pfSense admin パスワードは後で変更すること
     
-- PC1には勝手にIPが割り当てられる
+PC1には勝手にIPが割り当てられる
     
-- DNS・NATも正常に動作中
+DNS・NATも正常に動作中
     
 
 ---

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "proxmoxのWeb GUIにアクセスできない話"
-description: "関数・ループ・配列など、競プロでよく使われるより実践的なC++"
+description: "自宅ラボにProxmox VE 8.3を新規インストールしたところ、管理 GUIへブラウザからアクセスできずにハマりました。備忘録として、"
 date: "2024/03/24"
 authors: ["kasa021"]
 tags: ["proxmox", "web-gui", "ネットワーク"]
@@ -31,9 +31,9 @@ tags: ["proxmox", "web-gui", "ネットワーク"]
 ---
 
 ## 症状
-* ブラウザで `https://192.168.2.150:8006/` にアクセスすると **ERR_CONNECTION_TIMED_OUT**。
-* Mac から `ping 192.168.2.150` → `No route to host`。
-* Proxmox 側では `curl -k https://127.0.0.1:8006/` が **HTTP 200** を返し、GUI サービス自体は稼働。****
+1. ブラウザで `https://192.168.2.150:8006/` にアクセスすると **ERR_CONNECTION_TIMED_OUT**。
+2. Mac から `ping 192.168.2.150` → `No route to host`。
+3. Proxmox 側では `curl -k https://127.0.0.1:8006/` が **HTTP 200** を返し、GUI サービス自体は稼働。
 
 ---
 
@@ -102,9 +102,11 @@ iface vmbr0 inet static
 ---
 
 ## まとめ
-* **症状** : GUI にアクセスできない／ping が届かない。
-* **原因** : Proxmox だけ別サブネット (192.168.2.0/24)。ARP が解決できず通信不可。
-* **対処** : Proxmox の管理 IP をホームゲートウェイと同じ 192.168.0.0/24 に変更。
+**症状** : GUI にアクセスできない／ping が届かない。
+
+**原因** : Proxmox だけ別サブネット (192.168.2.0/24)。ARP が解決できず通信不可。
+
+**対処** : Proxmox の管理 IP をホームゲートウェイと同じ 192.168.0.0/24 に変更。
 
 同じように「ローカル機器同士なのに繋がらない」ときは、まず **IP サブネットの一致** と **ARP テーブル** を疑うと解決が早いです。
 

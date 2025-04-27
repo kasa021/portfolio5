@@ -51,15 +51,23 @@
   padding-left: 1.4em;
   margin: 1rem 0;
 }
-.main li { margin: 0.4rem 0; }
+.main li { margin: 0.4rem 0;
+    display: list-item;
+ }
 
 .main blockquote {
   margin: 1.5rem 0;
   padding: 0.8rem 1.2rem;
-  border-left: 4px solid #2c83ff;
+  border-left: 4px solid var(--tag-text-color);
   background: var(--background-color);
   color: var(--text);
 }
+
+.main li > p {
+  display: inline;      /* <p> をインライン化して改行を潰す */
+  margin: 0;            /* デフォルト余白を除去 */
+}
+
 
 /* ===== コードブロック ===== */
 .main pre {
@@ -70,15 +78,17 @@
   font-size: 0.9rem;
 }
 .main pre code {
-  color: var(--text);
+  color: var(--code-text-color);
   font-family: "SFMono-Regular", Consolas, Menlo, monospace;
 }
 .main code:not(pre code) {   /* インラインコード */
-  background: var(--background-color);
+  background: var(--inline-code-background-color);
   padding: 0.15em 0.4em;
   border-radius: 4px;
-  font-size: 0.9em;
+  font-size: 0.9rem;
 }
+
+
 
 /* ===== 画像 ===== */
 .main img {
@@ -110,11 +120,11 @@
 .tag {
   padding: 0.25em 0.8em;
   border-radius: 9999px;
-  background: #eef4ff;
-  color: #2c83ff;
+  background: var(--tag-background-color);
+  color: var(--tag-text-color);
   font-size: 0.9rem;
   line-height: 1;
-  border: 1px solid rgba(44,131,255,0.3);
+  border: 1px solid rgba(255, 122, 122, 0.3);
   transition: background 0.15s;
 }
 .tag a { color: inherit; }
